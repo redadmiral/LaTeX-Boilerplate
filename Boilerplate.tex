@@ -1,0 +1,96 @@
+%integrierte .bib Datei
+\begin{filecontents}{bibliography.bib}
+%Onlinegenerator für Zitationen: http://manas.tungare.name/software/isbn-to-bibtex/
+
+@article{bergmannNovy,
+author = {Bergmann, Knut; Novy Leonard},
+title = {Zur Konkretisierung der Debatte über philanthropische Finanzierungsmodelle},
+journal = {Journalismus in der digitalen Moderne},
+pages = {201-2011},
+year = {2013}
+}
+
+@book{bonfadelli2007,
+   title =     {Medien und Migration: Europa als multikultureller Raum?},
+   author =    {Heinz Bonfadelli and Heinz Moser (eds.)},
+   publisher = {VS Verlag für Sozialwissenschaften},
+   year =      {2007}
+}
+
+@online{latexGeschichte,
+author = {Wielenga, Friso},
+title  = {Latex - Geschichte},
+date   = {2017-02-05},
+url    = {http://www.selflinux.org/selflinux/html/latex_geschichte01.html}
+}
+
+\end{filecontents}
+
+%Präambel
+
+\documentclass[a4paper,11pt]{article}% Alternativ book oder report
+\usepackage[german, ngerman]{babel} % Neue deutsche Rechtschreibung, deutsche Überschriften und Beschreibungen
+\usepackage[T1] {fontenc} % Symbole
+\usepackage[utf8]{inputenc} % UTF-8 Sonderzeichen
+\usepackage[babel,german=quotes]{csquotes} % Deutsche Anführungszeichen
+\usepackage{amsfonts}
+\usepackage{listing}
+\usepackage{graphicx}%ermöglicht es Grafiken einzubinden
+\usepackage{eurosym}%Fügt das €-Symbol hinzu (\euro)
+
+\usepackage[
+   backend=biber      % Notwendig!
+  ,style=verbose-ibid   % Stil des Literaturverzeichnisses (https://de.sharelatex.com/learn/Biblatex_bibliography_styles)
+%  ,citestyle=ieee     % Stil der Zitationen
+  ,babel=other        % Mehrere Sprachen im Literaturverzeichnis
+%  ,sortlocale=de_DE   % locale of main language, it is for sorting
+%  ,bibencoding=UTF8   % Gibt das Encoding der externen .bib Datei an. % löschen wenn externe .bib-Datei verwendet wird.
+  ,block=space
+]{biblatex}
+
+\bibliography{bibliography} %interne .bib Datei
+%\addbibresource{test2.bib} %externe .bib Datei
+
+%Dokument
+
+\title{\LaTeX -Boilerplate}
+\author{Marco Lehner \textbackslash  lehnerma61237@th-nuernberg.de}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+%Bibliographie
+\newpage
+\nocite{} %Stellt * ins Literaturverzeichnis, obwohl nicht zitiert
+\printbibliography
+\end{document}
+
+
+%Anmerkungen
+%
+%Zitate in Fußnote und Literaturverzeichnis mit \footfullcite{}
+%
+%PDF in Konsole erstellen:
+%
+%latex dokument.tex
+%biber dokument.bcf
+%pdflatex dokument.tex
+%
+%eingeben. Dann die erstellte PDF-Datei öffnen.
+%
+%
+% Ein Leitfaden zur Erstellung von Bibliographien:
+%http://biblatex.dominik-wassenhoven.de/download/DTK-2_2008-biblatex-Teil1.pdf
+%http://biblatex.dominik-wassenhoven.de/download/DTK-4_2008-biblatex-Teil2.pdf
+% Teil 1 führt in Biblatex ein, Teil 2 zeigt praktische Anwendungen
+%
+%Troubleshooting:
+%Bei Fehler "biblatex.sty nicht gefunden":
+%"which latex" in die Konsole eingeben. Wenn eine andere Ausgabe als "/usr/local/texlive/2014/bin/x86_64-linux/latex" kommt, den Pfad mit "export PATH=/usr/local/texlive/2014/bin/x86_64-linux:$PATH" eingeben. Sollte gehen dann.
+%
+%Latexhandbuch (deutsch) http://mirror.selfnet.de/tex-archive/info/translations/biblatex/de/biblatex-de.pdf
+%Latexeinführung der Fernuni Hagen: https://www.fernuni-hagen.de/imperia/md/content/zmi_2010/a026_latex_einf.pdf
